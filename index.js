@@ -1,9 +1,10 @@
 'use strict'
 
-const execa = require('execa')
+const execa = require('execa');
+const ffprobePath = require('@ffprobe-installer/ffprobe').path;
 
 module.exports = async (input, opts = []) => {
-  const { stdout } = await execa(process.env.FFPROBE_PATH || 'ffprobe', [
+  const { stdout } = await execa(process.env.FFPROBE_PATH || ffprobePath || 'ffprobe', [
     '-print_format', 'json',
     '-show_error',
     '-show_format',
